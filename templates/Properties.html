@@ -1,0 +1,308 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Properties</title>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/home.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/res.css' %}" rel="stylesheet" />
+</head>
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a href="index.html">
+            <h2 class="estates">EGY-ESTATES</h2>
+          </a>
+          <div class="navbar-collapse" id="">
+            <ul class="navbar-nav justify-content-between ">
+              <div class="User_option">
+                <li class="">
+                  {% if user.is_authenticated %}
+                  <a class="" href="{% url 'logout'%}">
+                    Logout
+                  </a>
+                  {% else %}
+                  <a class="" href="{% url 'login'%}">
+                    Login
+                  </a>
+                  <a class="" href="{% url 'signup'%}">
+                    Signup
+                  </a>
+                  {% endif %}
+                </li>
+              </div>
+            </ul>
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="{% url 'Home'%}">HOME</a>
+                <a href="{% url 'products'%}">PROPERTIES</a>
+                <a href="{% url 'form'%}">PREDICT</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- sale section -->
+
+  <section class="sale_section layout_padding">
+
+    <style>
+      .sale-img {
+        width: 100%;
+        height: 200px; /* adjust the height as needed */
+        object-fit: cover; /* crop the image to fit the container */
+        object-position: center center; /* center the image */
+        display: block; /* ensure the image is a block element */
+        margin: 0; /* remove any margin */
+        padding: 0; /* remove any padding */
+        border: none; /* remove any border */
+      }
+  
+      .aspect-ratio {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 75%; /* this sets a 4:3 aspect ratio */
+      }
+  
+      .aspect-ratio img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      .sale_container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+  
+      .box {
+        flex-basis: 33.33%; /* adjust the width as needed */
+        max-width: 33.33%; /* adjust the width as needed */
+        padding: 0 10px; /* adjust the padding as needed */
+        box-sizing: border-box;
+      }
+
+    </style>
+
+    <div class="container-fluid">
+      <div class="heading_container">
+        <h2>
+          Properties For Sale
+        </h2>
+        <p>
+          There are many variations of properties available, apartments, duplexes, studios, chales, villas, and penthouses!
+        </p>
+      </div>
+      <div class="sale_container">
+        {% for apertment , image in page_obj %}
+        <div class="box">
+          <a href="{% url 'product' apertment.Apertment_Id %}">
+          <div class="img-box">
+            <div class="aspect-ratio">
+            <img src="{{image.Image}}" alt="" class="sale-img">
+            </div>
+          </div>
+          <div class="detail-box">
+            <h6>
+              {{apertment.Price|floatformat:0|intcomma}} EGP
+            </h6>
+            <p>
+          <!--<span style="font-weight: bold;">{{apertment.City}} , {{apertment.Location}}</span>-->   
+          {{apertment.City}} , {{apertment.Location}}
+            </p>
+          </div>
+        </a>
+        </div>
+        {% endfor %}
+        <div class="paginator">
+          {% if page_obj.has_previous %}
+            <a href="?page=1" class="paginator-link">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="paginator-link">Previous</a>
+          {% endif %}
+        
+          {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+              <span class="paginator-link paginator-current-page">{{ page_num }}</span>
+            {% elif page_num > page_obj.number|add:'-5' and page_num < page_obj.number|add:'5' %}
+              <a href="?page={{ page_num }}" class="paginator-link">{{ page_num }}</a>
+            {% endif %}
+          {% endfor %}
+        
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="paginator-link">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="paginator-link">Last &raquo;</a>
+          {% endif %}
+        </div>
+        
+  
+  </section>
+
+
+
+  <!-- end sale section -->
+
+
+  <!-- info section -->
+  <section class="info_section" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="info_contact">
+                    <h5>
+                        Contact Us
+                    </h5>
+                    <div>
+                        <div class="img-box">
+                            <img src="{% static 'image/location.png' %}" width="18px" alt="">
+                        </div>
+                        <p>
+                            Alex, Egypt
+                        </p>
+                    </div>
+                    <div>
+                        <div class="img-box">
+                            <img src="{% static 'image/phone.png' %}" width="12px" alt="">
+                        </div>
+                        <p>
+                            +20 109 717 2419
+                        </p>
+                    </div>
+                    <div>
+                        <div class="img-box">
+                            <img src="{% static 'image/mail.png' %}" width="18px" alt="">
+                        </div>
+                        <p>
+                            egyestatecompany@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_info">
+                    <h5>
+                        About Us
+                    </h5>
+                    <p>
+                        Team Work From Faculty of Computers And Data Science, Alexandria University
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="info_links">
+                    <h5>
+                        Links
+                    </h5>
+                    <ul>
+                        <li>
+                            <a href="">
+                                Hammamy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Khairy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Hassan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Abdelsalam
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Youssef
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="info_form ">
+                    <h5>
+                        Newsletter
+                    </h5>
+                    <form action="">
+                        <input type="email" placeholder="Enter your email">
+                        <button>
+                            Subscribe
+                        </button>
+                    </form>
+                    <div class="social_box">
+                        <a href="">
+                            <img src="{% static 'image/fb.png' %}" alt="">
+                        </a>
+                        <a href="">
+                            <img src="{% static 'image/twitter.png' %}" alt="">
+                        </a>
+                        <a href="">
+                            <img src="{% static 'image/linkedin.png' %}" alt="">
+                        </a>
+                        <a href="">
+                            <img src="{% static 'image/youtube.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end info_section -->
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">EGY-ESTATES Team Work</a>
+      </p>
+    </div>
+  </section>
+  <!-- end  footer section -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

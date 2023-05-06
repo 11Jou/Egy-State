@@ -1,0 +1,469 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>New Form</title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!--link href="css/style.css" rel="stylesheet" /-->
+    <!-- responsive style -->
+    <link href="{% static 'css/res.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <script>
+        function populateLocations() {
+            var citySelect = document.getElementById("city");
+            var locationSelect = document.getElementById("location");
+
+            // Clear the location options
+            locationSelect.options.length = 0;
+
+            // Determine which location options to add based on the selected name
+            if (citySelect.value == 0) {
+                addOption(locationSelect, 5 , "AbuQir");
+                addOption(locationSelect, 21 , "AbuTalat");
+                addOption(locationSelect, 12 , "Agami");
+                addOption(locationSelect, 40 , "AlHadrah");
+                addOption(locationSelect, 55 , "AlIbrahimiyyah")
+                addOption(locationSelect, 84 , "Amreya");
+                addOption(locationSelect, 36 , "Asafra");
+                addOption(locationSelect, 20 , "Attarin");
+                addOption(locationSelect, 9 , "Awayed");
+                addOption(locationSelect, 68 , "Azarita");
+                addOption(locationSelect, 14 , "Bacchus");
+                addOption(locationSelect, 43 , "Bahray-Anfoshy");
+                addOption(locationSelect, 44 , "Bolkly");
+                addOption(locationSelect, 79 , "Borgal-Arab");
+                addOption(locationSelect, 80 , "CampCaesar");
+                addOption(locationSelect, 60 , "Cleopatra");
+                addOption(locationSelect, 0 , "Dhahria");
+                addOption(locationSelect, 11 , "Dekheila");
+                addOption(locationSelect, 41 , "Fleming");
+                addOption(locationSelect, 56 , "Gianaclis");
+                addOption(locationSelect, 65, "Glim");
+                addOption(locationSelect, 16 , "Gomrok");
+                addOption(locationSelect, 23 , "Kabbary");
+                addOption(locationSelect, 67 , "KafrAbdo");
+                addOption(locationSelect, 66 , "Laurent");
+                addOption(locationSelect, 49 , "Maamoura");
+                addOption(locationSelect, 37 , "Mandara");
+                addOption(locationSelect, 35 , "Manshiyya");
+                addOption(locationSelect, 33 , "Miami");
+                addOption(locationSelect, 62 , "MoharamBik");
+                addOption(locationSelect, 39 , "Montazah");
+                addOption(locationSelect, 4 , "Nakheel");
+                addOption(locationSelect, 82 , "RamlStation");
+                addOption(locationSelect, 70 , "Roushdy");
+                addOption(locationSelect, 74 , "SabaPasha");
+                addOption(locationSelect, 73 , "SanStefano");
+                addOption(locationSelect, 24 , "Schutz");
+                addOption(locationSelect, 28 , "Seyouf");
+                addOption(locationSelect, 61 , "Shatby");
+                addOption(locationSelect, 32, "SidiBeshr");
+                addOption(locationSelect, 51 , "SidiGaber");
+                addOption(locationSelect, 72, "Smoha");
+                addOption(locationSelect, 71 , "Sporting");
+                addOption(locationSelect, 75 , "Stanley");
+                addOption(locationSelect, 27 , "Victoria");
+                addOption(locationSelect, 17 , "Wardian");
+                addOption(locationSelect, 78 , "Zezenia");
+
+            } else if (citySelect.value == 1) {
+                addOption(locationSelect, 53 , "15MayCity");
+                addOption(locationSelect, 30, "Abasiya");
+                addOption(locationSelect, 7 , "AinShams");
+                addOption(locationSelect, 25 , "AlAmiriyyah");
+                addOption(locationSelect, 69 , "AlManial");
+                addOption(locationSelect, 48 , "Almazah");
+                addOption(locationSelect, 15 , "BadrCity");
+                addOption(locationSelect, 38 , "Basateen");
+                addOption(locationSelect, 10 , "Daral-Salaam");
+                addOption(locationSelect, 83 , "DowntownCairo");
+                addOption(locationSelect, 47 , "ElFostat");
+                addOption(locationSelect, 1 , "EzbetElNakhl");
+                addOption(locationSelect, 19, "GesrAlSuez");
+                addOption(locationSelect, 29 , "Hadayekal-Kobba");
+                addOption(locationSelect, 22 , "HadayekHelwan");
+                addOption(locationSelect, 63, "Heliopolis");
+                addOption(locationSelect, 26 , "HelmeyatElZaytoun");
+                addOption(locationSelect, 18 , "Helwan");
+                addOption(locationSelect, 76 , "Katameya");
+                addOption(locationSelect, 54 , "Maadi");
+                addOption(locationSelect, 85, "Madinaty");
+                addOption(locationSelect, 6 , "Marg");
+                addOption(locationSelect, 57 , "Masral-Kadema");
+                addOption(locationSelect, 13 , "Matareya");
+                addOption(locationSelect, 89, "Mokattam");
+                addOption(locationSelect, 58 , "MostakbalCity");
+                addOption(locationSelect, 46, "NasrCity");
+                addOption(locationSelect, 88 , "NewCairo-ElTagamoa");
+                addOption(locationSelect, 81 , "NewCapitalCity");
+                addOption(locationSelect, 64 , "NewHeliopolis");
+                addOption(locationSelect, 31 , "NewNozha");
+                addOption(locationSelect, 50 , "ObourCity");
+                addOption(locationSelect, 52 , "Ramses+RamsesExtension");
+                addOption(locationSelect, 86, "RehabCity");
+                addOption(locationSelect, 3 , "SalamCity");
+                addOption(locationSelect, 8 , "SayedaZeinab");
+                addOption(locationSelect, 59 , "Sheraton");
+                addOption(locationSelect, 77, "ShoroukCity");
+                addOption(locationSelect, 34 , "Shubra");
+                addOption(locationSelect, 42 , "Tura");
+                addOption(locationSelect, 45 , "ZahraaAlMaadi");
+                addOption(locationSelect, 87 , "Zamalek");
+                addOption(locationSelect, 2 , "Zawyaal-Hamra");
+
+            }
+        }
+    </script>
+    <script>
+        function addOption(select, value, text) {
+            var option = document.createElement("option");
+            option.value = value;
+            option.text = text;
+            select.add(option);
+        }
+    </script>
+
+<script>
+    function myFunction() {
+        // Check if user is logged in
+        if (/* Check user login status here */) {
+            // User is logged in, do something when the button is clicked
+            alert("Button clicked!");
+        } else {
+            // User is not logged in, disable the button
+            document.getElementById("myButton").disabled = true;
+        }
+    }
+</script>
+</head>
+<body>
+    <body class="sub_page">
+        <div class="hero_area">
+            <!-- header section strats -->
+            <header class="header_section">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container">
+                        <a class="hclass" href="index.html">
+                            <h2 class="estates">EGY-ESTATES</h2>
+                        </a>
+                        <div class="navbar-collapse" id="">
+                            <ul class="navbar-nav justify-content-between ">
+                                <div class="User_option">
+                                    <li class="">
+                                        {% if user.is_authenticated %}
+                                        <a class="" href="{% url 'logout'%}">
+                                          Logout
+                                        </a>
+                                        {% else %}
+                                        <a class="" href="{% url 'login'%}">
+                                          Login
+                                        </a>
+                                        <a class="" href="{% url 'signup'%}">
+                                          Signup
+                                        </a>
+                                        {% endif %}
+                                      </li>
+                                </div>
+                            </ul>
+                            <div class="custom_menu-btn">
+                                <button onclick="openNav()">
+                                    <span class="s-1">
+
+                                    </span>
+                                    <span class="s-2">
+
+                                    </span>
+                                    <span class="s-3">
+
+                                    </span>
+                                </button>
+                            </div>
+                            <div id="myNav" class="overlay">
+                                <div class="overlay-content">
+                                    <a href="{% url 'Home' %}">HOME</a>
+                                    <a href="{% url 'products' %}">PROPERTIES</a>
+                                    <a href="{% url 'form' %}">PREDICT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+                    <!-- end header section -->
+
+        <br>
+        <div id="card2">
+
+            <section class="price_section layout_padding">
+                <div class="container">
+                    <div class="heading_container">
+                        <h2>
+                            Predict Your Property Price
+                        </h2>
+                        <h5><b>Get a market value analysis for your proberty ,<br>a report will be sent directly to your
+                                e-mail
+                                within a minute.</b></h5>
+
+                    </div>
+                </div>
+            </section>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <label for="Location">Please enter your property information </label>
+                    <label for="city"></label>
+                    <select id="city" onchange="populateLocations()" name="city">
+                        <option value="" disabled selected hidden>Select a City</option>
+                        <option value=0>Alexandria</option>
+                        <option value=1>Cairo</option>
+                    </select>
+                    <label for="location"></label>
+                    <select id="location" name="location">
+                        <option value="" disabled selected hidden>Select a Location</option>
+                    </select>
+                    <br>
+                </div>
+                <!--  <div>
+                            <label for="rooms">Where Is Your Property? </label>
+                            <br>
+                            <select name="City"ype id="city" required>
+                                <option value="" disabled selected hidden>City</option>
+                                <option value=1>Alexandria</option>
+                                <option value=3>Cairo</option>
+                            </select>
+                            <select name="Location"ype id="location" required>
+                                <option value="" disabled selected hidden>Location</option>
+                                <option value=1>Alexandria</option>
+                                <option value=3>Cairo</option>
+                            </select> 
+                        </div>
+                    -->
+
+                <div>
+                    <label for="rooms"></label>
+                    <br>
+                    <select name="property" id="property" required>
+                        <option value="" disabled selected hidden>Property Type</option>
+                        <option value=1>Apartment</option>
+                        <option value=3>Chalet</option>
+                        <option value=4 >Duplex</option>
+                        <option value=5>Benthouse</option>
+                        <option value=8>Stand Alone Villa</option>
+                        <option value=0>Studio</option>
+                        <option value=6>Town House</option>
+                        <option value=2>Twin House</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="Compound"></label>
+                    <br>
+                    <select name="Compound" id="Compound" required>
+                        <option value="" disabled selected hidden>Compound</option>
+                        <option value=1>Yes</option>
+                        <option value=0>No</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label for="size"></label>
+                    <br>
+                    <input name="size" id="size" type="number" min="40" max="1000" step="5"
+                        placeholder="Area in square meters" required>
+                    <!--<span style="font-size: 18 px;">Area in square meters</span>-->
+                </div>
+                <div>
+                    <label for="rooms"></label>
+                    <br>
+                    <select name="bedrooms" id="bedrooms" required>
+                        <option value="" disabled selected hidden>Number of bedrooms</option>
+                        <option value=1>1 Bedroom</option>
+                        <option value=2>2 Bedrooms</option>
+                        <option value=3>3 Bedrooms</option>
+                        <option value=4>4 Bedrooms</option>
+                        <option value=5>5 Bedrooms</option>
+                        <option value=6>6 Bedrooms</option>
+                        <option value=7>7 Bedrooms</option>
+                        <option value=8>8 Bedrooms</option>
+                        <option value=9>9 Bedrooms</option>
+                        <option value=10>10 Bedrooms</option>
+                        <option value=11>11 Bedrooms</option>
+                    </select>
+                </div>
+                <br>
+
+                <div>
+                    <select name="bathrooms" id="bathrooms" required>
+                        <option value="" disabled selected hidden>Number of bathrooms</option>
+                        <option value=1>1 Bathroom</option>
+                        <option value=2>2 Bathrooms</option>
+                        <option value=3>3 Bathrooms</option>
+                        <option value=4>4 Bathrooms</option>
+                        <option value=5>5 Bathrooms</option>
+                        <option value=6>6 Bathrooms</option>
+                        <option value=7>7 Bathrooms</option>
+                        <option value=8>8 Bathrooms</option>
+                        <option value=9>9 Bathrooms</option>
+                        <option value=10>10 Bathrooms</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="finish"></label>
+                    
+                    <select name="finish" id="finish" required>
+                        <option value="" disabled selected hidden>Delivery Term</option>
+                        <option value=3>Core & Shell</option>
+                        <option value=0>Finished</option>
+                        <option value=2>Not Finished</option>
+                        <option value=1>Semi Finished</option>
+                    </select>
+                    <span style="color: red; font-weight: bold;" >{{msg}}</span>
+                </div>
+                <br>
+                    <input type="reset">
+                    <input type="submit" value="Request Now">
+                </div>
+            </form>
+        </div>
+        <!-- info section -->
+        <section class="info_section" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="info_contact">
+                            <h5>
+                                Contact Us
+                            </h5>
+                            <div>
+                                <div class="img-box">
+                                    <img src="{% static 'image/location.png' %}" width="18px" alt="">
+                                </div>
+                                <p>
+                                    Alex, Egypt
+                                </p>
+                            </div>
+                            <div>
+                                <div class="img-box">
+                                    <img src="{% static 'image/phone.png' %}" width="12px" alt="">
+                                </div>
+                                <p>
+                                    +20 109 717 2419
+                                </p>
+                            </div>
+                            <div>
+                                <div class="img-box">
+                                    <img src="{% static 'image/mail.png' %}" width="18px" alt="">
+                                </div>
+                                <p>
+                                    egyestatecompany@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_info">
+                            <h5>
+                                About Us
+                            </h5>
+                            <p>
+                                Team Work From Faculty of Computers And Data Science, Alexandria University
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_links">
+                            <h5>
+                                Links
+                            </h5>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        Hammamy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Khairy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Hassan
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Abdelsalam
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Youssef
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_form ">
+                            <h5>
+                                Newsletter
+                            </h5>
+                            <form action="">
+                                <input type="email" placeholder="Enter your email">
+                                <button>
+                                    Subscribe
+                                </button>
+                            </form>
+                            <div class="social_box">
+                                <a href="">
+                                    <img src="{% static 'image/fb.png'%}" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="{% static 'image/twitter.png' %}" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="{% static 'image/linkedin.png' %}" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="{% static 'image/youtube.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end info_section -->
+        <!-- footer section -->
+        <section class="container-fluid footer_section ">
+            <div class="container">
+                <p>
+                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    <a href="https://html.design/">EGY-ESTATES Team Work</a>
+                </p>
+            </div>
+        </section>
+        <!-- end  footer section -->
+        <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</body>
+</html>

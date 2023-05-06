@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Sign up for EGY-ESTATES</title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!--link href="css/style.css" rel="stylesheet" /-->
+    <!-- responsive style -->
+    <link href="{% static 'css/res.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <body class="sub_page">
+        <div class="hero_area">
+            <!-- header section strats -->
+            <header class="header_section">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container">
+                        <a class="hclass" href="{% url 'Home'%}">
+                            <h2 class="estates">EGY-ESTATES</h2>
+                        </a>
+                        <div class="navbar-collapse" id="">
+                            <ul class="navbar-nav justify-content-between ">
+                                <div class="User_option">
+                                    <li class="">
+                                        {% if user.is_authenticated %}
+                                        <a class="" href="{% url 'logout'%}">
+                                          Logout
+                                        </a>
+                                        {% else %}
+                                        <a class="" href="{% url 'login'%}">
+                                          Login
+                                        </a>
+                                        {% endif %}
+                                      </li>
+                                </div>
+                            </ul>
+
+                            <div class="custom_menu-btn">
+                                <button onclick="openNav()">
+                                    <span class="s-1">
+
+                                    </span>
+                                    <span class="s-2">
+
+                                    </span>
+                                    <span class="s-3">
+
+                                    </span>
+                                </button>
+                            </div>
+                            <div id="myNav" class="overlay">
+                                <div class="overlay-content">
+                                    <a href="{% url 'Home'%}">HOME</a>
+                                    <a href="{% url 'products' %}">PROPERTIES</a>
+                                    <a href="{% url 'form'%}">PREDICT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <!-- end header section -->
+        </div>
+        <br>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            <div id="card">
+                <br>
+                <section class="price_section layout_padding">
+                    <div class="container">
+                        <div class="heading_container">
+                            <h2>
+                                Create a new account </h2>
+                            <h5><b>It's quick and easy.</b></h5>
+        
+                        </div>
+                    </div>
+                </section>
+                <div>
+                    <label for="for who"></label>
+                    <br>
+                    <input name="name" id="name" type="text" required placeholder="Name">
+                    <br>
+                    <input name="email" id="email" type="email" required placeholder="Email">
+                    <br>
+                    <input name="password" id="name" type="password" required placeholder="New password">
+                    <br>
+                </div>
+                <div>
+                    <p style="color: red;">{{message}}</p>
+                    <input type="submit" value="Sign Up">
+                </div>
+                <div><a href="{% url 'login'%}">
+                        Already have an account?
+                        <br>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+        </form>
+
+        <!-- info section -->
+        <section class="info_section" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="info_contact">
+                            <h5>
+                                Contact Us
+                            </h5>
+                            <div>
+                                <div class="img-box">
+                                    <img src="{% static 'image/location.png' %}" width="18px" alt="">
+                                </div>
+                                <p>
+                                    Alex, Egypt
+                                </p>
+                            </div>
+                            <div>
+                                <div class="img-box">
+                                    <img src="{% static 'image/phone.png' %}" width="12px" alt="">
+                                </div>
+                                <p>
+                                    +20 109 717 2419
+                                </p>
+                            </div>
+                            <div>
+                                <div class="img-box">
+                                    <img src="{% static 'image/mail.png' %}" width="18px" alt="">
+                                </div>
+                                <p>
+                                    egyestatecompany@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_info">
+                            <h5>
+                                About Us
+                            </h5>
+                            <p>
+                                Team Work From Faculty of Computers And Data Science, Alexandria University
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="info_links">
+                            <h5>
+                                Links
+                            </h5>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        Hammamy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Khairy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Hassan
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Abdelsalam
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Youssef
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info_form ">
+                            <h5>
+                                Newsletter
+                            </h5>
+                            <form action="">
+                                <input type="email" placeholder="Enter your email">
+                                <button>
+                                    Subscribe
+                                </button>
+                            </form>
+                            <div class="social_box">
+                                <a href="">
+                                    <img src="{% static 'image/fb.png' %}" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="{% static 'image/twitter.png' %}" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="{% static 'image/linkedin.png' %}" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="{% static 'image/youtube.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end info_section -->
+
+        <!-- footer section -->
+        <section class="container-fluid footer_section ">
+            <div class="container">
+                <p>
+                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    <a href="https://html.design/">EGY-ESTATES Team Work</a>
+                </p>
+            </div>
+        </section>
+        <!-- end  footer section -->
+        <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    </body>
+</body>
+
+</html>
